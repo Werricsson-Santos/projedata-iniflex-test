@@ -68,9 +68,23 @@ public class Empresa {
     }
 	
 	public void imprimirSalariosMinimos(BigDecimal salarioMinimo) {
-        this.funcionarios.forEach(funcionario -> {
+		this.funcionarios.forEach(funcionario -> {
             BigDecimal salariosMinimos = funcionario.getSalario().divide(salarioMinimo, RoundingMode.DOWN);
-            System.out.println(funcionario.getNome() + " ganha " + salariosMinimos + " salários mínimos.");
+            if (funcionario.getSalario().compareTo(salarioMinimo) == 0) {
+                System.out.println(funcionario.getNome() + " ganha 1 salário mínimo.");
+            } else {
+                int multiplicadorSalariosMinimos = salariosMinimos.intValue();
+                String categoriaSalario;
+                if (salariosMinimos.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0) {
+                    categoriaSalario = multiplicadorSalariosMinimos + " salários mínimos.";
+                } else {
+                    categoriaSalario = "entre " + multiplicadorSalariosMinimos + " e " + (multiplicadorSalariosMinimos + 1) + " salários mínimos.";
+                }
+                if (multiplicadorSalariosMinimos == 0) {
+                    categoriaSalario = "menos de 1 salário mínimo.";
+                }
+                System.out.println(funcionario.getNome() + " ganha " + categoriaSalario);
+            }
         });
     }
 	
