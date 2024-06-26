@@ -2,9 +2,12 @@ package com.iniflex.model;
 
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -43,6 +46,32 @@ public class Empresa {
         this.funcionarios.stream()
                 .max(Comparator.comparingInt(Funcionario::getIdade))
                 .ifPresent(funcionario -> System.out.println("Nome: " + funcionario.getNome() + ", Idade: " + funcionario.getIdade()));
+    }
+	
+	public void imprimirFuncionariosOrdemAlfabetica() {
+        this.funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getNome))
+                .forEach(System.out::println);
+    }
+	
+	public void imprimirTotalSalarios() {
+		Locale LocaleBR = new Locale("pt", "BR");
+		NumberFormat nf = NumberFormat.getNumberInstance(LocaleBR);
+		
+		nf.setMinimumFractionDigits(2);
+		nf.setMaximumFractionDigits(2);
+		
+        BigDecimal total = this.funcionarios.stream()
+                .map(Funcionario::getSalario)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.println("Total dos salários: R$ " + nf.format(total));
+    }
+	
+	public void imprimirSalariosMinimos(BigDecimal salarioMinimo) {
+        this.funcionarios.forEach(funcionario -> {
+            BigDecimal salariosMinimos = funcionario.getSalario().divide(salarioMinimo, RoundingMode.DOWN);
+            System.out.println(funcionario.getNome() + " ganha " + salariosMinimos + " salários mínimos.");
+        });
     }
 	
 	public void demitir(Funcionario funcionario) {

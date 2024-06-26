@@ -59,7 +59,7 @@ public class Funcionario extends Pessoa {
 	@Override
 	public String toString() {
 		return "Funcionario [\nNome:" + getNome()+ "\nData de nascimento:" + imprimirDataNascimento() +
-							"\nSalario:" + imprimirSalario() + "\nFuncao:" + funcao + 
+							"\nSalario: R$ " + imprimirSalario() + "\nFuncao:" + funcao + 
 							"\n]\n";
 	}
 	

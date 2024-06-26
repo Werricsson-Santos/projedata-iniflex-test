@@ -57,9 +57,13 @@ public class Application {
 		
 		
 		//3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.
-			projeData.imprimirFuncionarioComMaiorIdade();
+			//projeData.imprimirFuncionarioComMaiorIdade();
 			
 	    //3.10 – Imprimir a lista de funcionários por ordem alfabética.
+			//projeData.imprimirFuncionariosOrdemAlfabetica();
+		
+		//3.11 – Imprimir o total dos salários dos funcionários.
+			projeData.imprimirTotalSalarios();
 	}
 
 }
