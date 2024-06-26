@@ -28,8 +28,8 @@ Diante disso, você deve desenvolver um projeto java, com os seguintes requisito
 
 ## Diagrama de classes
 
+```mermaid
 classDiagram
-
     class Pessoa {
         - String nome
         - LocalDate dataNascimento
@@ -73,4 +73,4 @@ classDiagram
 
     Pessoa <|-- Funcionario
     Empresa --> Funcionario : contains
-
+```
