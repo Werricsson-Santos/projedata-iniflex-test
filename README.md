@@ -26,3 +26,50 @@ Diante disso, você deve desenvolver um projeto java, com os seguintes requisito
 ## Tabela fornecida:
 ![Tabela de usuários](./assets/tabela-funcionarios.png)
 
+## Diagrama de classes
+
+classDiagram
+    class Pessoa {
+        - String nome
+        - LocalDate dataNascimento
+        + Pessoa(String nome, LocalDate dataNascimento)
+        + String getNome()
+        + void setNome(String nome)
+        + LocalDate getDataNascimento()
+        + void setDataNascimento(LocalDate dataNascimento)
+    }
+
+    class Funcionario {
+        - BigDecimal salario
+        - String funcao
+        + Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao)
+        + BigDecimal getSalario()
+        + void setSalario(BigDecimal salario)
+        + String getFuncao()
+        + void setFuncao(String funcao)
+        + String imprimirDataNascimento()
+        + String imprimirSalario()
+        + int getIdade()
+        + String toString()
+    }
+
+    class Empresa {
+        - String nome
+        - List<Funcionario> funcionarios
+        + String getNome()
+        + void setNome(String nome)
+        + List<Funcionario> getFuncionarios()
+        + void setFuncionarios(List<Funcionario> funcionarios)
+        + Map<String, List<Funcionario>> imprimirFuncionariosPorFuncao()
+        + void imprimirAniversariantes(int... meses)
+        + void imprimirFuncionarioComMaiorIdade()
+        + void imprimirFuncionariosOrdemAlfabetica()
+        + void imprimirTotalSalarios()
+        + void imprimirSalariosMinimos(BigDecimal salarioMinimo)
+        + void demitir(Funcionario funcionario)
+        + void aumentoSalarialGeral(int porcentagem)
+    }
+
+    Pessoa <|-- Funcionario
+    Empresa --> Funcionario : contains
+
