@@ -29,6 +29,7 @@ Diante disso, você deve desenvolver um projeto java, com os seguintes requisito
 ## Diagrama de classes
 
 classDiagram
+
     class Pessoa {
         - String nome
         - LocalDate dataNascimento
